@@ -185,7 +185,7 @@ ScrollReveal().reveal('.about-imageContent', { delay: 600, origin:'left'});
 ScrollReveal().reveal('.meu-text', { delay: 600, origin:'bottom'});
 ScrollReveal().reveal('.menu-items', { delay: 600, origin:'bottom'});
 ScrollReveal().reveal('.time-table', { delay: 600, origin:'right'});
-ScrollReveal().reveal('.section-subtitle', { delay: 600, origin:'right'});
+ScrollReveal().reveal('.section-subtitle', { delay: 100, origin:'right'});
 ScrollReveal().reveal('.brand-images', { delay: 500, origin:'bottom'});
 ScrollReveal().reveal('.review-text', { delay: 500, origin:'left'});
 ScrollReveal().reveal('.footerLinks-title', { delay: 500, origin:'right'});
