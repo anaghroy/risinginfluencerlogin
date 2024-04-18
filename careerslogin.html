@@ -152,77 +152,11 @@
 <!--careers starts here-->
     <div class="jobs-list-container">
         <h2>JOB OPPORTUNITIES</h2>
+  
         <input class="job-search" type="text" placeholder="Search here..." />
-        <div class="jobs">
-            <div class="job">
-            <img src="images/careers/software-engineer.svg" alt=""/>
-            <h3 class="job-title">Software Engineer</h3>
-            <div class="details">
-                Responsible for designing, developing and maintaining software systems and applications.
-                <P>MUMBAI</P>
-                <P>Experience: 1-3 years</P>
-            </div>
-            <a href="jobform.html"  class="apply-btn">Apply Now</a>
-            <span class="open-positions">2 open positions</span>
-        </div>
-                <div class="job">
-                <img src="images/careers/data-scientist.svg" alt=""/>
-                <h3 class="job-title">Data-scientist</h3>
-                <div class="details">
-                        Responsible for collecting, analyzing and interpreting large data sets to help organizations make better decisions.
-                        <P>GUJARAT</P>
-                        <P>Experience: 0-2 years</P>
-                </div>
-                <a href="jobform.html"  class="apply-btn">Apply Now</a>
-                <span class="open-positions">3 open positions</span>
-                </div>
-                <div class="job">
-                <img src="images/careers/project-manager.svg" alt=""/>
-                <h3 class="job-title">Project Manager</h3>
-                <div class="details">
-                        Responsible for planning, executing and closing projects on time and within budget.
-                        <P>BIHAR</P>
-                        <P>Experience: 1-3 years</P>
-                </div>
-                <a href="jobform.html"  class="apply-btn">Apply Now</a>
-                <span class="open-positions">1 open positions</span>
-                </div>
-                <div class="job">
-                <img src="images/careers/product-manager.svg" alt=""/>
-                <h3 class="job-title">Product Manager</h3>
-                <div class="details">
-                        Responsible for managing the entire product life cycle, from ideation to launch and post-launch maintenance.
-                        <P>ASSAM</P>
-                        <P>Experience: 2-3 years</P>
-                </div>
-                <a href="jobform.html"  class="apply-btn">Apply Now</a>
-                <span class="open-positions">1 open positions</span>
-                </div>
-                <div class="job">
-                <img src="images/careers/sales-representative.svg" alt=""/>
-                <h3 class="job-title">Sales Representative</h3>
-                <div class="details">
-                        Responsible for reaching out to potential customers and closing sales deals.
-                        <P>GURGAON</P>
-                        <P>Experience: 1-3 years</P>
-                </div>
-                <a href="jobform.html"  class="apply-btn">Apply Now</a>
-                <span class="open-positions">4 open positions</span>
-                </div>
-
-                <div class="job">
-            <img src="images/careers/marketing-manager.svg" alt=""/>
-            <h3 class="job-title">Marketing Manager</h3>
-            <div class="apply">
-                Responsible for creating and executing marketing strategies to promote a company or product.
-                <P>MUMBAI</P>
-                <P>Experience: 1-2 years</P>
-            </div>
-            <a href="jobform.html"  class="apply-btn">Apply Now</a>
-            <span class="open-positions">1 open positions</span>
-                </div>
-                </div>
-        </div>
+  
+        <div class="jobs"></div>
+      </div>
 <!--careers ends here-->
 <!-- Blog Section starts here-->
 <section class="section review" id="blog">
@@ -347,5 +281,128 @@
 
 <!-- custom JavaScript -->
 <script src="js/careerscriptlogin.js"></script>
+    <script>
+        //jobs search bar starts here
+const jobs = [
+  {
+    title: "Software Engineer",
+    image: "images/careers/software-engineer.svg",
+    details:
+      "Responsible for designing, developing and maintaining software systems and applications. <br>MUMBAI",
+    openPositions: "2",
+    link: "jobform.html",
+  },
+
+  {
+    title: "Data Scientist",
+    image: "images/careers/data-scientist.svg",
+    details:
+      "Responsible for collecting, analyzing and interpreting large data sets to help organizations make better decisions. <br>GUJARAT",
+    openPositions: "3",
+    link: "jobform.html",
+  },
+
+  {
+    title: "Project Manager",
+    image: "images/careers/project-manager.svg",
+    details:
+      "Responsible for planning, executing and closing projects on time and within budget. <br>BIHAR",
+    openPositions: "1",
+    link: "jobform.html",
+  },
+
+  {
+    title: "Product Manager",
+    image: "images/careers/product-manager.svg",
+    details:
+      "Responsible for managing the entire product life cycle, from ideation to launch and post-launch maintenance. <br>ASSAM",
+    openPositions: "1",
+    link: "jobform.html",
+  },
+
+  {
+    title: "Sales Representative",
+    image: "images/careers/sales-representative.svg",
+    details:
+      "Responsible for reaching out to potential customers and closing sales deals. <br>GURGAON",
+    openPositions: "4",
+    link: "jobform.html",
+  },
+
+  {
+    title: "Marketing Manager",
+    image: "images/careers/marketing-manager.svg",
+    details:
+      "Responsible for creating and executing marketing strategies to promote a company or product. <br>MUMBAI",
+    openPositions: "1",
+    link: "jobform.html",
+  },
+];
+
+const jobsHeading = document.querySelector(".jobs-list-container h2");
+const jobsContainer = document.querySelector(".jobs-list-container .jobs");
+const jobSearch = document.querySelector(".jobs-list-container .job-search");
+
+let searchTerm = "";
+
+if (jobs.length == 1) {
+  jobsHeading.innerHTML = `${jobs.length} Jobs`;
+} else {
+  jobsHeading.innerHTML = `${jobs.length} Jobs`;
+}
+
+const createJobListingCards = () => {
+  jobsContainer.innerHTML = "";
+
+  jobs.forEach((job) => {
+    if (job.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+      let jobCard = document.createElement("div");
+      jobCard.classList.add("job");
+
+      let image = document.createElement("img");
+      image.src = job.image;
+
+      let title = document.createElement("h3");
+      title.innerHTML = job.title;
+      title.classList.add("job-title");
+
+      let details = document.createElement("div");
+      details.innerHTML = job.details;
+      details.classList.add("details");
+
+      let detailsBtn = document.createElement("a");
+      detailsBtn.href = job.link;
+      detailsBtn.innerHTML = "More Details";
+      detailsBtn.classList.add("details-btn");
+
+      let openPositions = document.createElement("span");
+      openPositions.classList.add("open-positions");
+
+      if (job.openPositions == 1) {
+        openPositions.innerHTML = `${job.openPositions} open position`;
+      } else {
+        openPositions.innerHTML = `${job.openPositions} open positions`;
+      }
+
+      jobCard.appendChild(image);
+      jobCard.appendChild(title);
+      jobCard.appendChild(details);
+      jobCard.appendChild(detailsBtn);
+      jobCard.appendChild(openPositions);
+
+      jobsContainer.appendChild(jobCard);
+    }
+  });
+};
+
+createJobListingCards();
+
+jobSearch.addEventListener("input", (e) => {
+  searchTerm = e.target.value;
+
+  createJobListingCards();
+});
+
+//jobs search bar ends here
 </body>
 </html>
